@@ -7,19 +7,23 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton( child: Icon(Icons.add),onPressed: (){
-         print('madness and badness combination');
-         showModalBottomSheet(
-          //shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(22)),
-           context: context, builder: (context) {
-           return CustomAddSheet();
-         },);
-
-      }),
-      body:  Padding(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xff053900),
+        child: Icon(Icons.add,),
+        onPressed: () {
+          print('madness and badness combination');
+          showModalBottomSheet(
+            //shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(22)),
+            context: context,
+            builder: (context) {
+              return CustomAddSheet();
+            },
+          );
+        },
+      ),
+      body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: NotesViewBody(
-        ),
+        child: NotesViewBody(),
       ),
     );
   }

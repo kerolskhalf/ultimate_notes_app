@@ -7,10 +7,10 @@ class NotesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return const Column(
       children: [
         SizedBox(height: 50,),
-        CustomAppBar(),
+        CustomAppBar(passedIcon: Icons.search,pageName: 'My Notes',),
         SizedBox(height: 20,),
         Expanded(child: NotesList()),
 

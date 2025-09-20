@@ -1,20 +1,20 @@
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
+  import 'custom_icon.dart';
 
-import 'custom_search_icon.dart';
-
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text('My Notes',style: TextStyle(fontSize: 30, letterSpacing: 2.0),) ,
-        Spacer(),
-        CustomSearchIcon(),
-      ],
-    );
+  class CustomAppBar extends StatelessWidget {
+    const CustomAppBar({super.key,required this.passedIcon,required this.pageName});
+  final IconData passedIcon ;
+  final String pageName;
+    @override
+    Widget build(BuildContext context) {
+      return  Row(
+       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(pageName,style: TextStyle(fontSize: 30, letterSpacing: 2.0),) ,
+          Spacer(),
+          CustomIcon(icon: passedIcon),
+        ],
+      );
+    }
   }
-}
 
