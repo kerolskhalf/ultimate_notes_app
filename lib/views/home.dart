@@ -9,8 +9,10 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton( child: Icon(Icons.add),onPressed: (){
          print('madness and badness combination');
-         showModalBottomSheet(context: context, builder: (context) {
-           return CustomBottomSheet();
+         showModalBottomSheet(
+          //shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(22)),
+           context: context, builder: (context) {
+           return CustomAddSheet();
          },);
 
       }),
