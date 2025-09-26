@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class SaveButton extends StatelessWidget {
   const SaveButton({
     super.key,
-    this.onTap
+    this.onTap,
+    this.isLoading = false,
   });
   final VoidCallback? onTap;
+  final bool isLoading ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,7 +20,9 @@ class SaveButton extends StatelessWidget {
           color: Color(0xff518242),
         ),
         child: Center(
-          child: Text(
+          child: isLoading
+              ? SizedBox(width: 25,height: 25,child: CircularProgressIndicator())
+              : Text(
             'Add',
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
