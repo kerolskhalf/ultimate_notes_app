@@ -23,48 +23,50 @@ class _CustomFormValidatorState extends State<CustomFormValidator> {
     return Form(
       key: formKey,
       autovalidateMode: autoValidateMode,
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 30, bottom: 30),
-            child: CustomTextField(
-              hintText: 'title',
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 30, bottom: 30),
+              child: CustomTextField(
+                hintText: 'title',
+                onSaved: (value) {
+                  title = value;
+                },
+              ),
+            ),
+            CustomTextField(
+              hintText: 'sub title',
+              maxLines: 6,
               onSaved: (value) {
-                title = value;
+                subTitle = value;
               },
             ),
-          ),
-          CustomTextField(
-            hintText: 'sub title',
-            maxLines: 6,
-            onSaved: (value) {
-              subTitle = value;
-            },
-          ),
-          const Spacer(),
-          BlocBuilder<AddNoteCubit,AddNoteState>(
-            builder: (context,state) => SaveButton(
-              isLoading: state is AddNoteLoading ? true :false ,
-                    onTap: () {
-                      if (formKey.currentState!.validate()) {
-                        formKey.currentState!.save();
+            const SizedBox(height: 80,),
+            BlocBuilder<AddNoteCubit,AddNoteState>(
+              builder: (context,state) => SaveButton(
+                isLoading: state is AddNoteLoading ? true :false ,
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
 
-                        NoteModel noteModel = NoteModel(
-                          title: title!,
-                          subtitle: subTitle!,
-                          date: DateTime.now().toString(),
-                          color: Colors.amberAccent.toARGB32(),
-                        );
-                        BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-                      } else {
-                        autoValidateMode = AutovalidateMode.always;
-                      }
-                    },
+                          NoteModel noteModel = NoteModel(
+                            title: title!,
+                            subtitle: subTitle!,
+                            date: DateTime.now().toString(),
+                            color: Colors.amberAccent.toARGB32(),
+                          );
+                          BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                        } else {
+                          autoValidateMode = AutovalidateMode.always;
+                        }
+                      },
 
+              ),
             ),
-          ),
-          const SizedBox(height: 30),
-        ],
+            const SizedBox(height: 30),
+          ],
+        ),
       ),
     );
   }

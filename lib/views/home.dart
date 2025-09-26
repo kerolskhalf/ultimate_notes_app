@@ -13,6 +13,7 @@ class HomeView extends StatelessWidget {
         onPressed: () {
           debugPrint('madness and badness combination');
           showModalBottomSheet(
+            isScrollControlled: true,
             //shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(22)),
             context: context,
             builder: (context) {
