@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../cubits/add_note_cubit/add_note_cubit.dart';
+import '../../logic/model/note_model.dart';
 import 'custom_button.dart';
 import 'custom_dotted_text_field.dart';
 
@@ -13,7 +16,7 @@ class CustomFormValidator extends StatefulWidget {
 class _CustomFormValidatorState extends State<CustomFormValidator> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
-  String? title,subTitle;
+  String? title, subTitle;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -25,24 +28,32 @@ class _CustomFormValidatorState extends State<CustomFormValidator> {
             padding: EdgeInsets.only(top: 30, bottom: 30),
             child: CustomTextField(
               hintText: 'title',
-              onSaved: (val){
-                title = val;
+              onSaved: (value) {
+                title = value;
               },
             ),
           ),
           CustomTextField(
             hintText: 'sub title',
             maxLines: 6,
-            onSaved: (value){
-              subTitle=value;
+            onSaved: (value) {
+              subTitle = value;
             },
           ),
           const Spacer(),
           SaveButton(
             onTap: () {
-              if(formKey.currentState!.validate()) {
+              if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-              }else{
+
+                NoteModel noteModel = NoteModel(
+                  title: title!,
+                  subtitle: subTitle!,
+                  date: DateTime.now().toString(),
+                  color: Colors.amberAccent.toARGB32(),
+                );
+                BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+              } else {
                 autoValidateMode = AutovalidateMode.always;
               }
             },

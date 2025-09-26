@@ -28,9 +28,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           validator: (value){
 
             if(value?.isEmpty ?? true) {
-              setState(() {
-                
-              });
+              setState(() {});
               colorChanging = Colors.red;
               return 'field is required';
             }

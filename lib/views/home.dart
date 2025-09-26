@@ -11,7 +11,7 @@ class HomeView extends StatelessWidget {
         backgroundColor: Color(0xff053900),
         child: Icon(Icons.add,),
         onPressed: () {
-          print('madness and badness combination');
+          debugPrint('madness and badness combination');
           showModalBottomSheet(
             //shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(22)),
             context: context,
