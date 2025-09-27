@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_state.dart';
 import 'custom_form_validator.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class CustomAddSheet extends StatelessWidget {
   const CustomAddSheet({super.key});
@@ -17,6 +16,7 @@ class CustomAddSheet extends StatelessWidget {
         child: BlocConsumer<AddNoteCubit, AddNoteState>(
           listener: (context, state) {
             if (state is AddNoteFail){
+              // ignore: avoid_print
               print('---------------> failed from add note bottom sheet ${state.errorMessage}');
             }
             if (state is AddNoteSuccess) {

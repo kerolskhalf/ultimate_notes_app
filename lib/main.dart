@@ -9,6 +9,7 @@ import 'constats.dart';
 
 void main() async {
   Bloc.observer = SimpleBlocObserver();
+
   await Hive.initFlutter();
 
   Hive.registerAdapter(NoteModelAdapter());
