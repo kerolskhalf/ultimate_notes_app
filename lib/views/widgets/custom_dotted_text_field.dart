@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 class CustomTextField extends StatefulWidget {
- const  CustomTextField({super.key,required this.hintText,this.maxLines=1,this.onSaved});
+ const  CustomTextField({super.key,required this.hintText,this.maxLines=1,this.onSaved, this.onChanged});
 final String hintText;
 final int maxLines;
 final void Function(String?)? onSaved;
+final void Function(String)? onChanged;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -25,6 +26,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: Container(
         padding: EdgeInsets.all(10),
         child: TextFormField(
+
           validator: (value){
 
             if(value?.isEmpty ?? true) {
@@ -34,6 +36,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             }
             return null;
           },
+          onChanged: widget.onChanged,
           onSaved: widget.onSaved,
           maxLines:widget.maxLines ,
           decoration: InputDecoration(
