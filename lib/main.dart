@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/logic/model/note_model.dart';
 import 'package:notes_app/simple_bloc_observer.dart';
 import 'package:notes_app/views/home.dart';
@@ -26,7 +27,9 @@ class NotesApp extends StatelessWidget {
         theme: ThemeData(brightness:Brightness.dark,
             fontFamily: 'poppins'
         ),
-        home: HomeView(),
+        home: BlocProvider(
+            create: (context) => NotesCubit(),
+            child: HomeView()),
     );
   }
 }
