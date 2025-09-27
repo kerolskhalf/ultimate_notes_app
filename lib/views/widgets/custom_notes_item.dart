@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/logic/model/note_model.dart';
 
 import '../edite_note.dart';
 
 class CustomNotesItem extends StatelessWidget {
-  const CustomNotesItem({super.key});
-
+  const CustomNotesItem({super.key,
+    required this.note
+  });
+final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -14,7 +17,7 @@ class CustomNotesItem extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.only(top: 30,bottom: 30,left: 10),
         decoration: BoxDecoration(
-          color:  const Color(0xffffcc80),
+          color:   Color(note.color),
           borderRadius: BorderRadius.circular(20)
         ),
         child: Column(
@@ -23,9 +26,9 @@ class CustomNotesItem extends StatelessWidget {
             ListTile(
               title: Padding(
                 padding: const EdgeInsets.only(bottom: 30),
-                child: const Text('New note',style: TextStyle(color: Colors.black,fontSize: 25),),
+                child:  Text(note.title,style: TextStyle(color: Colors.black,fontSize: 25),),
               ),
-              subtitle: const Text('its a wonderful day to finish the last project',style: TextStyle(color: Colors.black54,fontSize: 20)),
+              subtitle:  Text(note.subtitle,style: TextStyle(color: Colors.black54,fontSize: 20)),
               trailing:Transform.translate(
                   offset: Offset(0, -50),
                   child: IconButton(onPressed: (){}, icon:const Icon( Icons.delete,color: Colors.black,size: 35,))),
@@ -34,7 +37,8 @@ class CustomNotesItem extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.only(right: 20),
-              child: const Text('may1, 2030'
+              child:  Text(
+                note.date
                 ,style: TextStyle(color: Colors.black),),
             ),
           ],

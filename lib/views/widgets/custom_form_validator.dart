@@ -53,7 +53,7 @@ class _CustomFormValidatorState extends State<CustomFormValidator> {
                           NoteModel noteModel = NoteModel(
                             title: title!,
                             subtitle: subTitle!,
-                            date: DateTime.now().toString(),
+                            date: DateTime.now().toString().substring(0,10),
                             color: Colors.amberAccent.toARGB32(),
                           );
                           BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
