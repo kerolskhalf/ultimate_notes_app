@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 
+import '../../constats.dart';
+
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isActive,required this.colorIndex});
 final bool isActive ;
@@ -45,20 +47,7 @@ class ColorsList extends StatefulWidget {
 
 class _ColorsListState extends State<ColorsList> {
   int colorIndex = 0;
-   List<Color> kNotesColors = const [
-    Color(0xFFFFD700),
-    Color(0xFFFF6B6B),
-    Color(0xFF4ECDC4),
-    Color(0xFF45B7D1),
-    Color(0xFF96CEB4),
-    Color(0xFFFECE85),
-    Color(0xFFD63384),
-    Color(0xFF6F42C1),
-    Color(0xFFF39C12),
-    Color(0xFF20C997),
-    Color(0xFFE74C3C),
-    Color(0xFF3498DB),
-  ];
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

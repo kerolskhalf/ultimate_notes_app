@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/logic/model/note_model.dart';
 import 'package:notes_app/views/widgets/custom_appbar.dart';
-
+import 'package:notes_app/views/widgets/edit_colors_list.dart';
 import 'widgets/custom_dotted_text_field.dart';
 
 class EditeNote extends StatefulWidget {
@@ -46,7 +46,11 @@ String? title , subtitle;
               onChanged: (value){
                 subtitle=value;
               },
-              hintText: widget.note.subtitle,maxLines: 8,),
+              hintText: widget.note.subtitle,maxLines: 9,),
+            SizedBox(height: 20,),
+            EditColorsList(
+              note: widget.note,
+            ),
           ],
         ),
       ),

@@ -10,9 +10,9 @@ class ColorPickerUI extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Color(0xFF2C2C2E), // Dark grey to match your UI
+        color: Color(0xFF2C2C2E),
         border: Border.all(color: Colors.grey.shade700, width: 1),
-        borderRadius: BorderRadius.circular(12), // Consistent with inner container
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
